@@ -7,11 +7,11 @@ matplotlib.rcParams['axes.unicode_minus'] = False
 import folium
 import json
 
-people = pd.read_csv('서울특별시_광진구_인구현황_20231231.csv', encoding='cp949') #index_col='행정기관'
+people = pd.read_csv('../서울특별시_광진구_인구현황_20231231.csv', encoding='cp949') #index_col='행정기관'
 new_people = people.drop(0, axis=0)
 print(new_people)
 
-geo='EMD_Seoul.geojson'
+geo='../EMD_Seoul.geojson'
 geo_str=json.load(open(geo, encoding='utf-8'))
 
 gwangjin=folium.Map(location =[37.535,127.084],zoom_start=12,tiles='cartodbpositron' )

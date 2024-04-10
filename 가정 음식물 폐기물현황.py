@@ -15,7 +15,10 @@ print(new_df)
 new_df.groupby("년도")['가정폐기물'].sum()
 
 df1 = new_df.groupby("년도")['가정폐기물','음식폐기물'].sum()
+df3 = new_df.groupby("년도")['가정폐기물'].sum()
+
 print(df1)
+print(df3//1000)
 
 plot_domestics = plt.figure()
 ax = plot_domestics.add_subplot(1,1,1)
@@ -26,6 +29,9 @@ plt.legend()
 
 plt.title("광진구 가정 및 음식 폐기물 현황")
 plt.show()
+
+df2 = df1//1000
+print(df2)
 
 
 

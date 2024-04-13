@@ -12,12 +12,12 @@ matplotlib.rcParams['font.size'] = 10
 matplotlib.rcParams['axes.unicode_minus'] = False
 
 # Folium Map Visualization
-# layers = {}
-# df_sig=gpd.read_file('../sig.json')
-# df_emd=gpd.read_file('../emd.json')
-# df_res=pd.merge(df_sig, df_emd, left_on=df_sig['SIG_CD'], right_on=df_emd['EMD_CD'].str[:5], how='left')
-# df_tmp=df_res[df_res['SIG_KOR_NM'].isin(['광진구'])].reset_index(drop=True)
-# map = folium.Map(location=(37.51434733724219, 127.07303593988632), tiles="cartodbpositron", zoom_start=12)
+layers = {}
+df_sig=gpd.read_file('../sig.json')
+df_emd=gpd.read_file('../emd.json')
+df_res=pd.merge(df_sig, df_emd, left_on=df_sig['SIG_CD'], right_on=df_emd['EMD_CD'].str[:5], how='left')
+df_tmp=df_res[df_res['SIG_KOR_NM'].isin(['광진구'])].reset_index(drop=True)
+map = folium.Map(location=(37.51434733724219, 127.07303593988632), tiles="cartodbpositron", zoom_start=12)
 
 # Refine
 df0=pd.read_csv('../한국환경공단_서울특별시 광진구 행정동별 배출량 정보.csv', encoding='cp949', index_col='행정동 명')
@@ -42,24 +42,24 @@ df3 = df1//3000
 print(df3)
 
 
-# for idx, row in df_tmp.iterrows():
+for idx, row in df_tmp.iterrows():
     
-#     gu_name = row['SIG_KOR_NM']
-#     dong_name = row['EMD_KOR_NM']
-#     polygon_wkt = row['geometry_y']
+    gu_name = row['SIG_KOR_NM']
+    dong_name = row['EMD_KOR_NM']
+    polygon_wkt = row['geometry_y']
     
-#     # 한국어
-#     t1 = folium.Choropleth(polygon_wkt, 
-#                        style_function=lambda feature, color='blue': {
-#                            'fillColor': color,
-#                            'fillOpacity': 0.1,
-#                            'color': 'black',
-#                            'weight': 1,
-#                            'opacity': 1
-#                        })
+    # 한국어
+    t1 = folium.Choropleth(polygon_wkt, 
+                       style_function=lambda feature, color='blue': {
+                           'fillColor': color,
+                           'fillOpacity': 0.1,
+                           'color': 'black',
+                           'weight': 1,
+                           'opacity': 1
+                       })
     
-#     t1.add_to(map)
+    t1.add_to(map)
 
-# map.save("test.html")
+map.save("test.html")
 
 
